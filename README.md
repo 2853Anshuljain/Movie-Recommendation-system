@@ -1,51 +1,76 @@
-Movie Recommendation System
-This project is a content-based movie recommendation system that suggests movies to users based on their similarity. The recommendation engine is built using Python, and the user interface is created with Streamlit.
+# 🎬Movie Recommendation System
 
-Features
-Content-Based Filtering: Recommends movies based on plot summaries, genres, keywords, cast, and crew.
+A *content-based movie recommender* built using *Python, **Scikit-learn, and **Streamlit, enhanced with **Natural Language Processing (NLP)* techniques like stemming and text vectorization.  
+The system analyzes movie metadata — such as overview, genres, cast, crew, and keywords — to recommend *top-5 similar movies* based on content similarity.
 
-Interactive UI: A user-friendly web interface built with Streamlit that allows users to select a movie and get recommendations.
+---
 
-Dynamic Poster Fetching: Fetches and displays movie posters from The Movie Database (TMDb) API to provide a richer user experience.
+## 🧠 Project Overview
 
-How It Works
-The recommendation system works by creating a "tag" for each movie that combines its overview, genres, keywords, top 3 cast members, and director. These tags are then vectorized using the CountVectorizer to create a numerical representation of each movie. The cosine similarity between these vectors is then calculated to determine how similar the movies are to each other.
+With thousands of movies available, users often struggle to find films similar to their favorites.  
+This project aims to solve that problem using *content-based filtering* and *NLP preprocessing*, providing intelligent movie recommendations through an interactive web interface.
 
-When a user selects a movie, the system finds the most similar movies and displays them as recommendations.
+---
 
-Files in This Project
-movie-recommender system.ipynb: The Jupyter notebook containing all the data cleaning, preprocessing, and model building steps.
+## 🚀 Features
 
-app.py: The Streamlit application that provides the user interface for the recommendation system.
+- 🔍 *Content-Based Recommendation Model* — Suggests similar movies using cosine similarity between vectorized metadata.  
+- 🧩 *NLP Preprocessing* — Includes stemming and token normalization for accurate similarity matching.  
+- 📊 *Data Cleaning & Feature Engineering* — Extracts and merges genres, keywords, cast, and crew information from TMDB datasets.  
+- 🌐 *Streamlit Web App* — User-friendly UI for selecting movies and viewing recommendations in real time.  
+- 🎞 *TMDB API Integration* — Fetches movie posters dynamically to enhance the visual experience.  
+- 💾 *Model Serialization* — Uses Pickle to store preprocessed data and similarity matrices for faster deployment.
 
-movie_dict.pkl: A serialized dictionary containing the movie data.
+---
 
-similarity.pkl: A serialized file containing the cosine similarity matrix.
+## 🧩 Tech Stack
 
-How to Run
-Clone the repository:
+| Category | Technologies |
+|-----------|---------------|
+| *Programming Language* | Python |
+| *Libraries* | NumPy, Pandas, Scikit-learn, NLTK |
+| *Web Framework* | Streamlit |
+| *API* | TMDB (The Movie Database) API |
+| *Serialization* | Pickle |
 
-git clone (https://github.com/2853Anshuljain/movie-recommendation-system.git)
+---
 
-Install the required libraries:
+## 📊 Workflow
 
+### 1️⃣ Data Collection  
+- Used TMDB 5000 Movies and Credits datasets.  
+- Merged them using common titles.  
+
+### 2️⃣ Data Preprocessing  
+- Removed null and duplicate entries.  
+- Parsed JSON-like fields using ast.literal_eval.
+
+### 3️⃣ Feature Engineering  
+- Extracted and combined important attributes: overview, genres, cast, crew, and keywords.  
+- Applied stemming to normalize text and created a combined tags column.  
+
+### 4️⃣ Model Building  
+- Used CountVectorizer(max_features=5000, stop_words='english') to build a Bag-of-Words model.  
+- Computed *cosine similarity* between movie vectors to determine closeness.  
+
+### 5️⃣ Deployment  
+- Built an interactive *Streamlit app* to input a movie and display top-5 similar titles with posters fetched from the *TMDB API*.  
+
+---
+
+## 🧰 Installation & Usage
+
+### 📦 Clone the Repository
+bash
+git clone https://github.com/2853Anshuljain/Movie-Recommendation-system.git
+cd NLP-Enhanced-Movie-Recommender
+
+
+### 🧑‍💻 Install Dependencies
+bash
 pip install -r requirements.txt
 
-Run the Streamlit app:
 
+### ▶ Run the Application
+```bash
 streamlit run app.py
-
-Open your web browser and go to the local URL provided by Streamlit to start using the recommendation system.
-
-Libraries Used
-Pandas: For data manipulation and analysis.
-
-NumPy: For numerical operations.
-
-Scikit-learn: For vectorizing text data and calculating cosine similarity.
-
-NLTK: For natural language processing tasks like stemming.
-
-Streamlit: For creating the interactive web application.
-
-Requests: For making API calls to fetch movie posters.
