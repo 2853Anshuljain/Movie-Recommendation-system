@@ -1,8 +1,6 @@
 Movie Recommendation System
 This project is a content-based movie recommendation system that suggests movies to users based on their similarity. The recommendation engine is built using Python, and the user interface is created with Streamlit.
 
-!(https://www.google.com/search?q=https://i.imgur.com/K2yB3f3.png)
-
 Features
 Content-Based Filtering: Recommends movies based on plot summaries, genres, keywords, cast, and crew.
 
